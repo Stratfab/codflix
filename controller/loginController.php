@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once( 'model/user.php' );
+require_once( 'model/User.php' );
 
 /****************************
 * ----- LOAD LOGIN PAGE -----
@@ -34,7 +34,7 @@ function login( $post ) {
   $user           = new User( $data );
   $userData       = $user->getUserByEmail();
 
-  $error_msg      = "Email ou mot de passe incorrect";
+  $error_msg      = "";
 
   if( $userData && sizeof( $userData ) != 0 ):
     if( $user->getPassword() == $userData['password'] ):
@@ -43,7 +43,14 @@ function login( $post ) {
       $_SESSION['user_id'] = $userData['id'];
 
       header( 'location: index.php ');
-    endif;
+
+    else:
+      $error_msg="Email ou mot de passe incorrect";
+  endif;
+  
+    else:
+      $error_msg="Email ou mot de passe incorrect";
+    
   endif;
 
   require('view/auth/loginView.php');

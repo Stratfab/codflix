@@ -1,6 +1,6 @@
 <?php
 
-require_once( 'model/user.php' );
+require_once( 'model/User.php' );
 
 /****************************
 * ----- LOAD SIGNUP PAGE -----
@@ -26,7 +26,7 @@ function signup( $post ) {
   $data                   = new stdClass();
   $data->email           = $post['email'];
   $data->password         = hash('sha256', ($_POST['password']));
-  $data->password_confirm = hash('sha256',($_POST['password_confirm']));
+  
 
   # Check if passwords are matching
   try {
