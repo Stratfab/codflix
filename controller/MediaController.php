@@ -10,6 +10,7 @@ function mediaPage() {
 
   $search = isset( $_GET['titl'] ) ? $_GET['titl'] : null;
   $medias = Media::filterMedias( $search );
+  $series = Media::filterSeries( $search );
 
   require('view/mediaListView.php');
 

@@ -33,6 +33,12 @@ if ( isset( $_GET['action'] ) ):
         else signupPage();
 
     break;
+    
+    case 'media':
+
+     mediaPage();
+
+    break;
 
     case 'logout':
 

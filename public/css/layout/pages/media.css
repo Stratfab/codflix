@@ -1,15 +1,25 @@
 /**********
 * Home page rules
 **********/
+*{
+    padding:0;
+    margin:0;
+}
+a, a:hover{
+    text-decoration:none;
+    color:black;
+}
+li{
+    list-style:none;
+}
 
-.media-list {
+.media-list-film {
     display: flex;
     flex-wrap: wrap;
-
     margin-bottom: 40px;
 }
 
-.media-list .item {
+.media-list-film .item {
     flex-basis: 24%;
     margin: 4px;
 
@@ -18,22 +28,22 @@
     padding-bottom: 25px;
 }
 
-.media-list .item .video {
+.media-list-film .item .video {
     width: 100%;
 }
 
-.media-list .item .video iframe {
+.media-list-film .item .video iframe {
     width: 100%;
 }
 
-.media-list .item .title {
+.media-list-film .item .title {
     color: #fff;
     font-weight: bold;
 
     padding: 8px 20px;
     text-align: center;
 }
-.media-list .item .title:after {
+.media-list-film .item .title:after {
     content: "";
     display: block;
     width: 20px;
@@ -42,14 +52,74 @@
     margin: 10px auto 0 auto;
 }
 
-.media-list .item:hover {
+.media-list-film .item:hover {
     text-decoration: none;
+    color:black;
 }
 
-.media-list .item .summary {
+.media-list-film .item .summary {
     color: #fff;
     padding: 8px 20px;
 
+}
+.media-list-series {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 40px;
+}
+
+.media-list-series .item {
+    flex-basis: 24%;
+    margin: 4px;
+
+    background: #f72035;
+
+    padding-bottom: 25px;
+}
+
+.media-list-series .item .video {
+    width: 100%;
+}
+
+.media-list-series .item .video iframe {
+    width: 100%;
+}
+
+.media-list-series .item .title {
+    color: #fff;
+    font-weight: bold;
+
+    padding: 8px 20px;
+    text-align: center;
+}
+.media-list-series .item .title:after {
+    content: "";
+    display: block;
+    width: 20px;
+
+    border-bottom: 1px solid var(--color-black);
+    margin: 10px auto 0 auto;
+}
+
+.media-list-series .item:hover {
+    text-decoration: none;
+}
+
+.media-list-series .item .summary {
+    color: #fff;
+    padding: 8px 20px;
+
+}
+.titre_film{
+    padding-left: 10px;
+    color:black;
+    background-color: lightgray;
+}
+.titre_series{
+    padding-left: 10px;
+    color:#f72035;
+    background-color: lightgray;
 }
 
 @media screen and (max-width: 768px) {

@@ -14,7 +14,8 @@ class Media {
   protected $trailer_url;
 
   public function __construct( $media ) {
-
+    $this->table;
+    
     $this->setId( isset( $media->id ) ? $media->id : null );
     $this->setGenreId( $media->genre_id );
     $this->setTitle( $media->title );
@@ -93,7 +94,7 @@ class Media {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM media WHERE title = ? ORDER BY release_date DESC" );
+    $req  = $db->prepare( "SELECT * FROM media WHERE type='film' ORDER BY release_date DESC" );
     $req->execute( array( '%' . $title . '%' ));
 
     // Close databse connection
@@ -102,5 +103,11 @@ class Media {
     return $req->fetchAll();
 
   }
-
+  public static function filterSeries( $title ) {
+    $db   = init_db();
+    $req = $db->prepare("SELECT * FROM media WHERE type='series'");
+    $req->execute( array( '%' . $title . '%' ));
+    
+    return $req->fetchAll();
+  }
 }
