@@ -2,23 +2,23 @@
 
 require_once( 'Database.php' );
 
-class Media {
+class Media  {
 
-  protected $id;
-  protected $genre_id;
-  protected $title;
-  protected $type;
-  protected $status;
-  protected $release_date;
-  protected $summary;
-  protected $trailer_url;
+  public $id;
+  public $genre_id;
+  public $title;
+  public $type;
+  public $status;
+  public $release_date;
+  public $summary;
+  public $trailer_url;
 
   public function __construct( $media ) {
-    $this->table;
+    
     
     $this->setId( isset( $media->id ) ? $media->id : null );
-    $this->setGenreId( $media->genre_id );
-    $this->setTitle( $media->title );
+    $this->setGenreId( isset($media->genre_id) ? $media->genre_id : null );
+    $this->setTitle( isset($media->title) ? $media->title : null );
   }
 
   /***************************
@@ -94,7 +94,7 @@ class Media {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM media WHERE type='film' ORDER BY release_date DESC" );
+    $req  = $db->prepare( "SELECT * FROM media WHERE type='film'" );
     $req->execute( array( '%' . $title . '%' ));
 
     // Close databse connection
@@ -109,5 +109,21 @@ class Media {
     $req->execute( array( '%' . $title . '%' ));
     
     return $req->fetchAll();
+  }
+
+  public function getmediaById($aïdi){
+    $db   = init_db();
+    $req = $db->prepare("SELECT * FROM media WHERE id=?");
+    $req->execute( array($aïdi));
+    return $req->fetch();
+  }
+
+  public function getSaisonById($serie){
+    $db   = init_db();
+    $req = $db->prepare("SELECT s.* FROM saison as s, media as m
+                                       WHERE s.id_media = m.id
+                                       AND s.id_media = ?");
+    $req->execute( array($serie));
+    return $req->fetchAll(PDO::FETCH_ASSOC);
   }
 }

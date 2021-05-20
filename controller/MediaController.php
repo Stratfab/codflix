@@ -15,3 +15,21 @@ function mediaPage() {
   require('view/mediaListView.php');
 
 }
+
+function afficheunfilm(){
+
+  if(isset($_GET['film'])){
+  $idfilm = $_GET['film'];
+  $media = new media($idfilm);
+  $getFilm = $media->getMediaById($idfilm);
+  }
+  elseif(isset($_GET['series'])){
+  $idserie = $_GET['series'];
+  $media = new media($idserie);
+  $getserie = $media->getMediaById($idserie);
+  $getSaison = $media ->getSaisonById($idserie);
+
+  }
+ 
+  require('view/mediaListView.php');
+}

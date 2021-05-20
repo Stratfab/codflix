@@ -1,9 +1,16 @@
 <?php
 // on importe tous les controllers
-require_once( 'controller/homeController.php' );
-require_once( 'controller/loginController.php' );
-require_once( 'controller/signupController.php' );
-require_once( 'controller/mediaController.php' );
+$controllers = scandir('controller');
+unset($controllers[0]);
+unset($controllers[1]);
+foreach($controllers as $controller){
+  require_once( 'controller/'.$controller);
+}
+
+// require_once( 'controller/homeController.php' );
+// require_once( 'controller/loginController.php' );
+// require_once( 'controller/signupController.php' );
+// require_once( 'controller/mediaController.php' );
 
 /**************************
 * ----- HANDLE ACTION -----
@@ -33,10 +40,20 @@ if ( isset( $_GET['action'] ) ):
         else signupPage();
 
     break;
-    
+
     case 'media':
+      
+  
+        if(isset($_GET['film']) || isset($_GET['series'])): 
+            afficheunfilm();
+        
+        
+  
+        else:
 
      mediaPage();
+        endif;
+      
 
     break;
 
