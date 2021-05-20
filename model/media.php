@@ -4,14 +4,14 @@ require_once( 'Database.php' );
 
 class Media  {
 
-  public $id;
-  public $genre_id;
-  public $title;
-  public $type;
-  public $status;
-  public $release_date;
-  public $summary;
-  public $trailer_url;
+  protected $id;
+  protected $genre_id;
+  protected $title;
+  protected $type;
+  protected $status;
+  protected $release_date;
+  protected $summary;
+  protected $trailer_url;
 
   public function __construct( $media ) {
     
