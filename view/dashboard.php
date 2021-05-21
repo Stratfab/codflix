@@ -43,10 +43,25 @@
       </div>
     </div>
 
-    <script src="public/lib/jquery/js/jquery-3.5.0.min"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="public/lib/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="public/js/script.js"></script>
   </body>
 
 </html>
+<!-- <script>
+
+function collapse(){
+
+$( '#sidebarCollapse' ).on( 'click', function() {
+
+$( '#sidebar' ).toggleClass('open');
+
+});
+
+
+}
+
+
+</script> -->
